@@ -1,20 +1,23 @@
-import { Component } from "react";
+import PropTypes from "prop-types";
 
-import './card.styles.css'
+import './card.styles.css';
 
-class Card extends Component {
-  render(){
-    const {id,name,email} = this.props.monster;
-    return(
-        <div className="card-container" key={id}>
+const Card = (props) => {
+  return (
+    <div className="card-container" key={props.monsterDetail.id}>
           <img
-            src={`https://robohash.org/${id}?set=set2&size=180x180`}
+            src={`https://robohash.org/${props.monsterDetail.id}?set=set2&size=180x180`}
             alt="monster"
           />
-          <h2>{name}</h2>
-          <p>{email}</p>
-        </div>
-    )
-  }
+          <h2>{props.monsterDetail.name}</h2>
+          <p>{props.monsterDetail.email}</p>
+    </div>
+  )
+}
+
+Card.propTypes={
+  name : PropTypes.string,
+  id : PropTypes.number,
+  
 }
 export default Card;
